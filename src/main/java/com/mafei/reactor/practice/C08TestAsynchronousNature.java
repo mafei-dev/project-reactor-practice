@@ -8,12 +8,15 @@ import java.util.Random;
 
 public class C08TestAsynchronousNature {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Flux<String> nameWithUpper = new C08TestAsynchronousNature().flatMapAsync();
         nameWithUpper.subscribe(name ->
                 System.out.println("name : " + name)
         );
+
+        //if we want to see the result, we have to sleep the main thread.
+        Thread.sleep(10000);
     }
 
     public Flux<String> flatMapAsync() {
